@@ -1,0 +1,197 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * CARE 32 Dental Care Center — medical-luxury design system.
+ * All brand colors live here as semantic tokens.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-dark: var(--primary-dark);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-navy: var(--navy);
+  --color-slate: var(--slate);
+  --color-soft-blue: var(--soft-blue);
+  --color-soft-mint: var(--soft-mint);
+  --color-mint: var(--mint);
+  --color-cyan-soft: var(--cyan-soft);
+  --color-surface: var(--surface);
+
+  --shadow-soft: 0 10px 30px -12px rgb(58 16 48 / 0.12);
+  --shadow-glow: 0 22px 60px -22px rgb(207 31 134 / 0.35);
+  --shadow-card: 0 18px 44px -20px rgb(58 16 48 / 0.18);
+}
+
+:root {
+  --radius: 1rem;
+
+  --background: #fdf7fa;
+  --foreground: #3a1030;
+  --surface: #ffffff;
+  --card: #ffffff;
+  --card-foreground: #3a1030;
+  --popover: #ffffff;
+  --popover-foreground: #3a1030;
+
+  --primary: #cf1f86;
+  --primary-foreground: #ffffff;
+  --primary-dark: #9c1465;
+
+  --secondary: #fdeaf4;
+  --secondary-foreground: #3a1030;
+  --cyan-soft: #f3b7d7;
+  --mint: #f2dfae;
+
+  --muted: #fdeaf4;
+  --muted-foreground: #8a6b7e;
+  --accent: #fbf3e3;
+  --accent-foreground: #3a1030;
+
+  --destructive: #e0576a;
+  --destructive-foreground: #ffffff;
+
+  --border: #f6dcea;
+  --input: #f6dcea;
+  --ring: #cf1f86;
+
+  --navy: #3a1030;
+  --slate: #8a6b7e;
+  --soft-blue: #fdeaf4;
+  --soft-mint: #fbf3e3;
+
+  --glass: rgb(255 255 255 / 0.7);
+  --gradient-hero: linear-gradient(160deg, #ffffff 0%, #fdeaf4 100%);
+  --gradient-tech: linear-gradient(160deg, #fdf7fa 0%, #fbf3e3 100%);
+  --gradient-primary: linear-gradient(135deg, #cf1f86 0%, #c9992f 100%);
+  --gradient-cyan: linear-gradient(135deg, #f3b7d7 0%, #ffffff 100%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--navy);
+    letter-spacing: -0.02em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+}
+
+@utility glass {
+  background: var(--glass);
+  backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid var(--border);
+}
+
+@utility gradient-hero {
+  background-image: var(--gradient-hero);
+}
+
+@utility gradient-tech {
+  background-image: var(--gradient-tech);
+}
+
+@utility gradient-primary {
+  background-image: var(--gradient-primary);
+}
+
+@utility text-gradient {
+  background-image: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility shadow-soft {
+  box-shadow: 0 10px 30px -12px rgb(58 16 48 / 0.12);
+}
+
+@utility shadow-card {
+  box-shadow: 0 18px 44px -20px rgb(58 16 48 / 0.18);
+}
+
+@utility shadow-glow {
+  box-shadow: 0 22px 60px -22px rgb(207 31 134 / 0.35);
+}
+
+@utility card-3d {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@utility float-soft {
+  animation: float-soft 6s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@utility spin-slow {
+  animation: spin-slow 26s linear infinite;
+}
