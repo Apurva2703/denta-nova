@@ -12,4 +12,9 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Pin the Nitro preset to "netlify" so the build output targets Netlify Functions.
+  // The NITRO_PRESET env var in netlify.toml also sets this at build time.
+  nitro: {
+    preset: "netlify",
+  },
 });
